@@ -19,7 +19,7 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>React App</title>
+    <title>PDF Test</title>
   </head>
   <body>
     <noscript>
@@ -36,5 +36,19 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+    <script src="jspdf.min.js"></script>
+    <script src="html2canvas.min.js"></script>
+    <script src="html2pdf.js"></script>
+    <script>
+function saveAsPdf(element, filename) {
+  html2pdf(element, {
+    margin: 0.25,
+    filename: '' + (filename || 'download') + '.pdf',
+    image: { type: 'jpeg', quality: 0.98 },
+    html2canvas: { dpi: 192, letterRendering: true },
+    jsPDF: { unit: 'in', format: 'letter', orientation: 'landscape' }
+  })
+}
+    </script>
   </body>
 </html>
